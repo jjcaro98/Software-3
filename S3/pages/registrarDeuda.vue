@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    
     <b-form @submit="addDeuda" v-if="show">
       <b-form-group
         id="input-group-entidad"
@@ -60,13 +61,15 @@
         <b-form-input id="input-cuota" v-model="deudas.fechaPago" required placeholder="d"></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="outline-primary">Registrar deuda</b-button>
+      
     </b-form>
   </div>
 </template>
 
 <script>
 export default {
+  beforeMount() {},
   data() {
     return {
       deudas: {
@@ -87,13 +90,22 @@ export default {
   },
   methods: {
     addDeuda() {
-      this.deuda.push({
+      let url = "http://localhost:81/deudas/";
+      var data = {
         entidad: this.deudas.entidad,
         tipoDeuda: this.deudas.tipoDeuda,
         montoTotal: this.deudas.montoTotal,
         cuota: this.deudas.cuota,
         fechaPago: this.deudas.fechaPago
-      });
+      };
+      this.$axios
+        .post(url, data)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
