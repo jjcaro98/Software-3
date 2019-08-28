@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" class="mt-4">
+  <div id="app" class="nose">
     
     <nuxt-link :to="'/Tarjetas/registrarTarjeta'"><b-button variant="outline-primary">Agregar tarjeta</b-button></nuxt-link>
 
@@ -75,4 +75,5 @@ export default {
 </script>
 
 <style>
+  @import url("../../styles/main.scss");
 </style>

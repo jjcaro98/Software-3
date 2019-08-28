@@ -1,6 +1,8 @@
 <template>
   <div class="mt-4" id="app">
-    <nuxt-link :to="'/registrarDeuda'"><b-button variant="outline-primary">Agregar Deuda</b-button></nuxt-link>
+    <nuxt-link :to="'/registrarDeuda'">
+      <b-button variant="outline-primary">Agregar Deuda</b-button>
+    </nuxt-link>
     <b-row class="mt-3">
       <b-col cols="10" md="3" v-for="(deuda,index) in cards" :key="index">
         <b-card
@@ -8,7 +10,6 @@
           border-variant="info"
           header-bg-variant="info"
           header-text-variant="white"
-
         >
           <b-card-text>Monto total: {{deuda.montoTotal}}</b-card-text>
           <b-card-text>Cuota: {{deuda.cuota}}</b-card-text>
@@ -27,7 +28,7 @@ export default {
   },
   data() {
     return {
-      cards: [],
+      cards: []
     };
   },
   methods: {
@@ -79,3 +80,6 @@ export default {
   }
 };
 </script>
+<style>
+@import url("../styles/main.scss");
+</style>

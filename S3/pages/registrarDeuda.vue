@@ -102,10 +102,18 @@ export default {
         .post(url, data)
         .then(response => {
           console.log(response);
+          console.log("guardas la info");
+      this.$router.push("/")
+      
         })
         .catch(error => {
           console.log(error);
         });
+    },
+    ejemplo() {
+      console.log("guardas la info");
+      this.$router.push("/")
+      
     }
   }
 };
