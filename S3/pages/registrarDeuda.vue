@@ -75,9 +75,9 @@ export default {
       deudas: {
         entidad: "",
         tipoDeuda: null,
-        montoTotal: "",
-        cuota: "",
-        fechaPago: ""
+        montoTotal: null,
+        cuota: null,
+        fechaPago: null
       },
       tipoDeuda: [
         { value: null, text: "Please select an option" },

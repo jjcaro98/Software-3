@@ -29,7 +29,7 @@ module.exports = app => {
         }
     })
 
-    
+
 
     app.get('/deudas', (req, res) => {
         db.deudas.find((err, deudas) => {
@@ -56,7 +56,7 @@ module.exports = app => {
         let updateDeuda = req.body
         db.deudas.update(
             { _id: mongojs.ObjectId(req.params.id) },
-            updateDeuda,
+            {$inc:{montoTotal:-10000}},
             {},
             (err, response) => {
                 res.json({

@@ -15,6 +15,7 @@
           <b-card-text>Cuota: {{deuda.cuota}}</b-card-text>
           <b-card-text>Proximo pago: {{deuda.fechaPago}}</b-card-text>
           <b-badge href="#" variant="danger" @click="deleteCard(index, deuda._id)">delete</b-badge>
+          <b-badge href="#" variant="primary" @click="restarMonto(deuda._id)">-</b-badge>
         </b-card>
       </b-col>
     </b-row>
@@ -48,21 +49,6 @@ export default {
         });
       this.cards.splice(index, 1);
     },
-    // getEndidad() {
-    //   let url = `http://localhost:81/deudas/${this.entidad}`
-
-    //   this.$axios
-    //     .get(url)
-    //     .then(response => {
-    //       console.log(response.data);
-    //       this.entidad = ""
-    //       if (response.data.error) {
-    //         this.errorMessage = reponse.data.message;
-    //       } else {
-    //         app.user = response.data.deudas
-    //       }
-    //     });
-    // },
     getAllRecords() {
       let url = "http://localhost:81/deudas/";
 
@@ -76,6 +62,13 @@ export default {
           this.cards = response.data.deudas;
         }
       });
+    },
+    restarMonto(id){
+      let url = `http://localhost:81/deudas/${id}`
+      this.$axios.put(url, id).then(response => {
+        console.log(response);
+        
+      })
     }
   }
 };
