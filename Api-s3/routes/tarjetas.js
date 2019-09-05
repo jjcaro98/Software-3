@@ -5,15 +5,15 @@ const db = mongojs('DatabaseS3', [
 ])
 
 module.exports = app => {
-    // app.get('/tarjetas/:id', (req, res) => {
-    //     db.tarjetas.find({
-    //         _id: mongojs.ObjectId(req.params.id)
-    //     }, (err, response) => {
-    //         res.json({
-    //             response: response
-    //         })
-    //     })
-    // })
+    app.get('/tarjetas/:id', (req, res) => {
+        db.tarjetas.find({
+            _id: mongojs.ObjectId(req.params.id)
+        }, (err, response) => {
+            res.json({
+                response: response
+            })
+        })
+    })
 
     app.get('/tarjetas', (req, res) => {
         db.tarjetas.find((err, tarjetas) => {

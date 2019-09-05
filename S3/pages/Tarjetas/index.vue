@@ -37,6 +37,7 @@
 export default {
   beforeMount() {
     this.getAllRecords();
+    
   },
   data() {
     return {

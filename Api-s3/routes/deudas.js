@@ -52,11 +52,25 @@ module.exports = app => {
         })
     })
 
-    app.put('/deudas/:id', (req, res) => {
+    app.put('/deudas/:entidad', (req, res) => {
         let updateDeuda = req.body
         db.deudas.update(
             { _id: mongojs.ObjectId(req.params.id) },
             {$inc:{montoTotal:-10000}},
+            {},
+            (err, response) => {
+                res.json({
+                    response: response
+                })
+            }
+        )
+    })
+
+    app.put('/deudas/:id/:value', (req, res) => {
+        let valor = req.params.value
+        db.deudas.update(
+            { _id: mongojs.ObjectId(req.params.id) },
+            {$set:{numeroTarjeta:valor}},
             {},
             (err, response) => {
                 res.json({
